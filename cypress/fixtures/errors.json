@@ -1,0 +1,7 @@
+{
+    "loginScreen": {
+        "invalidLogin": "Usuário ou senha inválido. Tente novamente ou verifique suas informações!",
+        "invalidEmailFormat": "Formato inválido",
+        "requiredField": "É campo obrigatório"
+    }
+}
