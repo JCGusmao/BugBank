@@ -15,7 +15,6 @@ describe('Fluxo de autenticação', () => {
         cy.contains(errors.loginScreen.invalidLogin).should('be.visible')
         cy.get('a:contains("Fechar")').click() //Botão de fechar
     })
-
 })
 
 describe('Validações do campo "E-mail"', () => {
