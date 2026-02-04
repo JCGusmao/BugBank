@@ -1,19 +1,19 @@
-import user from "../../fixtures/user.json"
-import errors from "../../fixtures/errors.json"
+import user from "../../../fixtures/user.json"
+import errors from "../../../fixtures/errors.json"
 
 describe('Fluxo de autenticação', () => {
-
-    it('Login com credenciais válidas', () => {
-        cy.home()
-        cy.login(user.validUsers.email, user.validUsers.password)
-        // falta a validação que o login foi realizado com sucesso.
-    })
 
     it('Login com credenciais inválidas', () => {
         cy.home()
         cy.login(user.invalidUsers.email, user.invalidUsers.password)
         cy.contains(errors.loginScreen.invalidLogin).should('be.visible')
         cy.get('a:contains("Fechar")').click() //Botão de fechar
+    })
+
+    it('Tentativa de login com os campos "E-mail" e "Senha" em branco', () => {
+        cy.home()
+        cy.attemptLoginWithoutEmail()
+        cy.attemptLoginWithoutPassword()
     })
 })
 
@@ -31,25 +31,27 @@ describe('Validações do campo "E-mail"', () => {
     invalidEmails.forEach((email) => {
         it(`Tentativa de login com o campo "E-mail" no formato inválido: ${email}`, () => {
             cy.home()
-            cy.login(email, user.validUsers.password)
+            cy.login(email, user.ValidUserWithBalance.password)
             cy.contains(errors.loginScreen.invalidEmailFormat).should('be.visible')
         })
     })
 
     it('Tentativa de login com o campo "E-mail" em branco', () => {
         cy.home()
-        cy.get('input[name="password"]').first().type(user.validUsers.password)
-        cy.get('input[name="email"]').first().type(" ").clear().blur()
-        cy.contains(errors.loginScreen.requiredField).should('be.visible')
+        cy.get('input[name="password"]').first().type(user.ValidUserWithBalance.password)
+        cy.attemptLoginWithoutEmail()
     })
 })
 
 describe('Validações do campo "Senha"', () => {
 
+    it('Tentativa de login com o campo "Senha" no formato inválido: ', () => {
+        
+    })
+
     it('Tentativa de login com o campo "Senha" em branco', () => {
         cy.home()
-        cy.get('input[name="email"]').first().type(user.validUsers.email)
-        cy.get('input[name="password"]').first().type(" ").clear().blur()
-        cy.contains(errors.loginScreen.requiredField).should('be.visible')
+        cy.get('input[name="email"]').first().type(user.ValidUserWithBalance.email)
+        cy.attemptLoginWithoutPassword()
     })
 })

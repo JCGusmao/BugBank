@@ -3,12 +3,12 @@ import user from "../../fixtures/user.json"
 describe('Validação tela Home', () => {
 
     beforeEach(() => {
-        cy.session([user.validUsers.email, user.validUsers.password], () => {
+        cy.session([user.ValidUserWithBalance.email, user.ValidUserWithBalance.password], () => {
             cy.home()
             cy.registerSucessfull(
-                user.validUsers.email,
-                user.validUsers.name,
-                user.validUsers.password,
+                user.ValidUserWithBalance.email,
+                user.ValidUserWithBalance.name,
+                user.ValidUserWithBalance.password,
                 true
             )
         })
@@ -17,8 +17,8 @@ describe('Validação tela Home', () => {
     it('Elementos da tela home', () => {
         cy.home()
         cy.login(
-            user.validUsers.email,
-            user.validUsers.password
+            user.ValidUserWithBalance.email,
+            user.ValidUserWithBalance.password
         )
         cy.checkElementsHome()
     })
@@ -26,8 +26,8 @@ describe('Validação tela Home', () => {
     it('Navegação dos botões da tela home', () => {
         cy.home()
         cy.login(
-            user.validUsers.email,
-            user.validUsers.password
+            user.ValidUserWithBalance.email,
+            user.ValidUserWithBalance.password
         )
         cy.checkButtonsHome()
     })

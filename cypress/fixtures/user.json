@@ -1,13 +1,13 @@
 {
-    "validUsers": {
+    "ValidUserWithBalance": {
         "name": "Tester Correct",
-        "email": "teste123@gmail.com",
+        "email": "contaComSaldo@gmail.com",
         "password": "Teste@123"
     },
 
-     "validUser2": {
+     "validUserWithoutBalance": {
         "name": "Tester user 2",
-        "email": "user2@gmail.com",
+        "email": "contaSemSaldo@gmail.com",
         "password": "Teste@123"
     },
     
@@ -15,4 +15,5 @@
         "email": "incorreto@gmail.com",
         "password": "incorreto123"
     }
+
 }
